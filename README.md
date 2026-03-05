@@ -4,5 +4,5 @@
 2. Java 17
 3. Maven
 4. Mybatis
-5.Thymeleaf (동기 방식)
-6.Docker, MariaDB
+5. Thymeleaf (동기 방식)
+6. Docker, MariaDB
