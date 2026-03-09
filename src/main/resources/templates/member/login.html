@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>login</title>
+    <!--css 연결-->
+    <link rel="stylesheet" th:href="@{/css/member/login.css}"/>
 </head>
 <body>
 
-<h1> Hi, Hello~ Cine Home! </h1>
-로그인 페이지입니다.
+<div class="login-wrapper">
+    <div class="login-box">
+        <h1 class="logo">CineHome</h1>
 
-<form th:action="@{member/login}" method="get">
-    <label>아이디   <input type="txet" name="memberId"/></label></br>
-    <label>비밀번호 <input type="txet" name="memeberPw"/></label></br>
-    <button type="submit">로그인</button>
-</form>
+        <!--로그인은 포스트 방식으로 하기-->
+        <form class="login-form" action="{member/login}" method="POST">
+        <input type="text" name="memberId" placeholder="아이디"/></br>
+        <input type="password" name="memberPw" placeholder="비밀번호"/></br>
+            <button type="submit" >로그인</button>
+        </form>
+        <a style="font-size: 14px; color: #666666; ">회원가입 (미오픈)</a>
+    </div>
+</div>
+
 
 
 </body>

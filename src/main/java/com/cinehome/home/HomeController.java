@@ -8,6 +8,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String cineHome(){
-        return "home/home";
+        return "home/cineHome";
     }
 }

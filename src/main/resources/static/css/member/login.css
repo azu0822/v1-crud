@@ -1,0 +1,41 @@
+body{
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;          /*화면의 전체 높이만큼*/
+    margin: 0;
+}
+
+.login-wrapper{
+    position: relative;
+    display: block;
+    border-radius: 4px 4px 0px 0px;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 50px;
+    text-align: center;
+}
+.login-form input::placeholder {
+    color: #dddddd;
+}
+.login-form input {
+    padding: 13px 15px 14px;
+    width: 270px;
+    margin-bottom: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;     /* 둥근 모서리 */
+    font-size: 14px;
+}
+
+.login-form button {
+    margin: 20px 0;
+    width: 300px;
+    padding: 12px;
+    background-color: #FDD835;
+    border: none;
+    border-radius: 6px;     /* 둥근 모서리 */
+    font-size: 14px;
+    color: #fff;
+    cursor: pointer;
+}
