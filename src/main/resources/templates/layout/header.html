@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <link rel="stylesheet" th:href="@{/css/layout/header.css}"/>
+</head>
+<body>
+
+<!--상단 헤더-->
+<header th:fragment="header" class="monaka-header monaka-header-center-3" role="banner">
+    <!--메뉴들-->
+    <div class="monaka-container monaka-flex monaka-align-middle monaka-align-justify">
+        <!--로고-->
+        <div class="monaka-logo-top manaka-desktop-only">
+            <h1><a href="/" title="CineHome" style="text-decoration:none; color:#000000;">CineHome</a></h1>
+        </div>
+        <!--상단 로그인/로그아웃 메뉴-->
+        <ul class="header_menu" style="list-style: none; gap:20px;">
+            <li> <a href="/member/login">로그인</a></li>
+            <li> <a href="/memberlogout">회원가입</a></li>
+        </ul>
+
+    </div>
+</header>
+
+</body>
+</html>

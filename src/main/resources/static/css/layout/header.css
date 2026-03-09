@@ -1,0 +1,71 @@
+/* 반응형 화면 최소넓이 지정*/
+@media (min-width: 768px) {
+    .monaka-container {
+        max-width: 768px;
+    }
+}
+@media (min-width: 640px) {
+    .monaka-container {
+        max-width: 640px;
+    }
+}
+
+/* 헤더 스타일 */
+.monaka-header{
+    width: 100%;
+    background-color: cornsilk;
+    color: #151918;
+    padding: 10px 20px;
+    /* 패딩 포함넓이 계산해서 박스넣기 */
+    box-sizing: border-box;
+}
+
+/* 컨테이너 */
+.monaka-container {
+    margin: 0 auto;     /*가운데 정렬*/
+    padding: 0 20px;    /* 좌우 20px 패딩*/
+    max-width: 1280px;  /* 최대 넓이 제한 */
+    position: relative; /* 자식 위치 조정*/
+}
+.header_menu {
+    display: flex;
+    gap: 20px;
+}
+.monaka-header {
+    position: relative;
+    will-change: top, transform;
+    z-index: 1024;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    line-height: 1.45;
+}
+
+/* 메뉴들 정렬 */
+.monaka-flex{
+    display: flex;
+}
+.monaka-align-middle{
+    /*세로정렬*/
+    align-items: center;
+}
+.monaka-align-justify {
+    /*좌우 양끝으로 보내기(동일한 간격)*/
+    justify-content: space-between;
+}
+
+/* 메뉴 스타일*/
+.header_menu li a {
+    margin-right: 12px;
+    padding-right: 12px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* 로고 스타일: 나중에 이미지로 바꿀 경우 사용 */
+.monaka-logo, .monaka-logo h1, .monaka-logo a {
+    display: flex;
+}
+/* 메뉴 리스트: 기본 점, 번호 제거 (나중에 메뉴 만들때 사용) */
+dl, li, menu, ol, ul {
+    list-style: none;
+}
