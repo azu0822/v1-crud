@@ -62,7 +62,7 @@ public class MemberController {
 
     // 회원가입 시
     @PostMapping("/signUp")
-    public String loginCheck(@RequestParam("memberId") String memberId,
+    public String signUp(@RequestParam("memberId") String memberId,
                              @RequestParam("memberPw") String memberPw,
                              @RequestParam("confirmPw") String confirmPw,
                              @RequestParam("name") String name, @RequestParam("phone") String phone,
@@ -77,10 +77,10 @@ public class MemberController {
             member.setMemberId(memberId); member.setMemberPw(memberPw);member.setName(name); member.setPhone(phone);
 
             // 회원ID가 존재하는지 확인하고 존재하면 회원 저장
-            MemberDomain memberResult = memberService.signUp(member);
+            MemberDomain result = memberService.signUp(member);
 
             // null 값이 반환되었으면 에러 메시지
-            if(memberResult == null){
+            if(result == null){
                 model.addAttribute("error", "이미 사용중인 아이디입니다.");
             return "member/signUpForm";
             }
@@ -89,8 +89,6 @@ public class MemberController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("error", "Exception 에러 발생");
-            model.addAttribute("error", "서버 에러: " + e.getMessage());
             return "member/signUpForm";
         }
     }
