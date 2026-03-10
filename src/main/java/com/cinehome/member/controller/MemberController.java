@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/member")
@@ -18,13 +17,19 @@ public class MemberController {
 
     @Autowired
     MemberService memberService;
-    MemberDomain memberDomain;
 
     // 로그인 페이지로 이동
     @GetMapping("/login")
     public String login() {
         return "member/login";
     }
+
+    // 회원가입 페이지로 이동
+    @GetMapping("/signUpForm")
+    public String sighUp() {
+        return "member/signUpForm";
+    }
+
     // 로그인 입력시
     @PostMapping("/login")
     public String loginCheck(@RequestParam("memberId") String memberId,
@@ -40,7 +45,7 @@ public class MemberController {
             }
             // 확인되어 성공시 세션에 저장
             session.setAttribute("member", member);
-            return "redirect:/review/";
+            return "redirect:/";
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,5 +58,40 @@ public class MemberController {
     public String logout(HttpSession session) throws Exception {
         session.invalidate();
         return "redirect:/";
+    }
+
+    // 회원가입 시
+    @PostMapping("/signUp")
+    public String loginCheck(@RequestParam("memberId") String memberId,
+                             @RequestParam("memberPw") String memberPw,
+                             @RequestParam("confirmPw") String confirmPw,
+                             @RequestParam("name") String name, @RequestParam("phone") String phone,
+                             Model model) throws Exception {   //html
+        try {
+            // memberId 입력됐는지, memberPw와 confirmPw가 다르면 에러
+            if (memberId == null || memberId.isEmpty() || memberPw == null || !memberPw.equals(confirmPw)) {
+                model.addAttribute("error", "비밀번호가 다릅니다.");
+                return "member/signUpForm";
+            }
+            MemberDomain member = new MemberDomain();
+            member.setMemberId(memberId); member.setMemberPw(memberPw);member.setName(name); member.setPhone(phone);
+
+            // 회원ID가 존재하는지 확인하고 존재하면 회원 저장
+            MemberDomain memberResult = memberService.signUp(member);
+
+            // null 값이 반환되었으면 에러 메시지
+            if(memberResult == null){
+                model.addAttribute("error", "이미 사용중인 아이디입니다.");
+            return "member/signUpForm";
+            }
+            // 성공적으로 저장되었으면 홈으로
+            return "redirect:/";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("error", "Exception 에러 발생");
+            model.addAttribute("error", "서버 에러: " + e.getMessage());
+            return "member/signUpForm";
+        }
     }
 }

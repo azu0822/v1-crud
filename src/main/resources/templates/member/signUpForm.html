@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <!--css 연결-->
+    <link rel="stylesheet" th:href="@{/css/member/signUpForm.css}"/>
+</head>
+<body>
+
+<div class="signUp-wrapper">
+    <div class="signUp-box">
+        <h1 class="logo">CineHome</h1>
+        <h3>회원가입</h3>
+
+        <!--회원가입 포스트 방식으로 하기-->
+        <!--required로 입력 안하면 막아놓기 꼭!-->
+        <form class="signUp-form" th:action="@{/member/signUp}" method="POST">
+            <div class="input-grop"><label>아이디</label></br>
+                <input type="text" name="memberId" required placeholder="아이디"/></br></div>
+            <div class="input-grop"><label>비밀번호</label></br>
+                <input type="password" name="memberPw" required placeholder="비밀번호"/></br></div>
+            <div class="input-grop"><label>비밀번호 확인</label></br>
+                <input type="password" name="confirmPw" required placeholder="비밀번호 확인"/></br></div>
+            <div class="input-grop"><label>이름</label></br>
+                <input type="text" name="name" required placeholder="이름"/></br></div>
+            <div class="input-grop"><label>휴대폰번호</label></br>
+                <input type="text" name="phone" required placeholder="휴대폰번호"/></br></div>
+
+            <button type="submit" >회원가입</button>
+        </form>
+
+        <div class="Error" th:if="${error}"></div>
+
+    </div>
+</div>
+
+<!--비밀번호가 다를 때 에러 메시지 표출-->
+<script th:inline="javascript">
+    const errorM = [[${error}]];
+    if(errorM) {
+        alert(errorM);
+    }
+</script>
+
+
+</body>
+</html>

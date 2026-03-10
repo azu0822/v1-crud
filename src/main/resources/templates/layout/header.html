@@ -20,7 +20,7 @@
         <ul class="header_menu" style="list-style: none; gap:20px;">
             <!--세션에 로그인 정보가 없을 때만 보여주기-->
             <li th:if="${session.member == null}"> <a href="/member/login">로그인</a></li>
-            <li th:if="${session.member == null}"> <a href="/member/new">회원가입</a></li>
+            <li th:if="${session.member == null}"> <a href="/member/signUpForm">회원가입</a></li>
             <!--세션에 로그인 정보가 있을 때만 보여주기-->
             <li th:if="${session.member != null}"> <a href="/member/logout">로그아웃</a></li>
             <li> <a href="/review/board">리뷰 게시판</a></li>

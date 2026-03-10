@@ -14,10 +14,16 @@
         <result property="role" column="role"/>
         <result property="creDt" column="cre_dt"/>
     </resultMap>
+
     <select id="findId" parameterType="map" resultType="MemberDomain">
         select * from member
         where member_id = #{memberId}
     </select>
+
+    <insert id="signUp" parameterType="MemberDomain">
+        insert into member (member_id, member_pw, name, phone)
+        values(#{memberId}, #{memberPw}, #{name}, #{phone})
+    </insert>
 
 
 </mapper>

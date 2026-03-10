@@ -19,5 +19,4 @@ public class MemberDomain {
     private String phone;          // 휴대폰번호
     private String role;           // 일반유저/관리자 식별용
     private LocalDateTime re_dt;   // 생성일자
-
 }
