@@ -14,9 +14,9 @@
         <result property="role" column="role"/>
         <result property="creDt" column="cre_dt"/>
     </resultMap>
-    <select id="login" parameterType="map" resultType="MemberDomain">
+    <select id="findId" parameterType="map" resultType="MemberDomain">
         select * from member
-        where member_id = #{memberId} and memer_pw = #{memberPw}
+        where member_id = #{memberId}
     </select>
 
 

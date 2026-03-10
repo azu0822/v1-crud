@@ -13,7 +13,7 @@
         <h1 class="logo">CineHome</h1>
 
         <!--로그인은 포스트 방식으로 하기-->
-        <form class="login-form" action="{member/login}" method="POST">
+        <form class="login-form" th:action="@{/member/login}" method="POST">
         <input type="text" name="memberId" placeholder="아이디"/></br>
         <input type="password" name="memberPw" placeholder="비밀번호"/></br>
             <button type="submit" >로그인</button>

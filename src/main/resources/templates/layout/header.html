@@ -18,9 +18,12 @@
 
         <!--상단 로그인/로그아웃 메뉴-->
         <ul class="header_menu" style="list-style: none; gap:20px;">
-            <li> <a href="/member/login">로그인</a></li>
-            <li> <a href="/member/new">회원가입</a></li>
-            <li> <a href="/review">리뷰 게시판</a></li>
+            <!--세션에 로그인 정보가 없을 때만 보여주기-->
+            <li th:if="${session.member == null}"> <a href="/member/login">로그인</a></li>
+            <li th:if="${session.member == null}"> <a href="/member/new">회원가입</a></li>
+            <!--세션에 로그인 정보가 있을 때만 보여주기-->
+            <li th:if="${session.member != null}"> <a href="/member/logout">로그아웃</a></li>
+            <li> <a href="/review/board">리뷰 게시판</a></li>
         </ul>
 
     </div>

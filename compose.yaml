@@ -1,10 +1,24 @@
+# [원래 설정]
+#services:
+#  mariadb:
+#    image: 'mariadb:latest'
+#    environment:
+#      - 'MARIADB_DATABASE=mydatabase'
+#      - 'MARIADB_PASSWORD=secret'
+#      - 'MARIADB_ROOT_PASSWORD=verysecret'
+#      - 'MARIADB_USER=myuser'
+#    ports:
+#      - '3306'
+
+# [변경 설정]
 services:
   mariadb:
     image: 'mariadb:latest'
     environment:
-      - 'MARIADB_DATABASE=mydatabase'
-      - 'MARIADB_PASSWORD=secret'
-      - 'MARIADB_ROOT_PASSWORD=verysecret'
-      - 'MARIADB_USER=myuser'
+      - 'MARIADB_DATABASE=cinehome'
+      - 'MARIADB_PASSWORD=root'
+      - 'MARIADB_ROOT_PASSWORD=root'
+      - 'MARIADB_USER=root'
     ports:
-      - '3306'
+    # 내 장비 포트번호 : 도커 내부 마리아디비 포트번호
+      - '3306:3306'
