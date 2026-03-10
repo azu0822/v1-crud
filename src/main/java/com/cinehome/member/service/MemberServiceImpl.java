@@ -24,20 +24,6 @@ public class MemberServiceImpl implements MemberService {
     }
 
     // 회원가입
-//    @Override
-//    public MemberDomain signUp(MemberDomain member) throws Exception {
-//        // DB 확인
-//        MemberDomain existMember = memberMapper.findId(member.getMemberId());
-//        // DB에 아이디가 있으면 '이미 사용중인 아이디입니다.'반환
-//        if(existMember != null || !existMember.getMemberId().isEmpty()){
-//            throw new IllegalStateException("이미 사용중인 아이디입니다.");
-//        }
-//        // 아이디가 존재하지 않으면 회원 저장
-//        memberMapper.signUp(member);
-//    }
-//}
-
-    // 회원가입
     @Override
     public MemberDomain signUp(MemberDomain member) throws Exception {
         // DB 확인
