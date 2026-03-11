@@ -49,6 +49,28 @@ public class ReviewController {
         reviewService.deleteReview(reviewId);
         return "redirect:/review/board";
     }
+    // 리뷰 등록 createReview()
+    @GetMapping("board/createReview")
+    public String createReview(@RequestParam("movieId") int movieId,
+                               @RequestParam("userId") int userId,
+                               @RequestParam("reviewTitle") String reviewTitle,
+                               @RequestParam("reviewContent") String reviewContent,
+                               @RequestParam("rating") int rating,
+                               Model model) throws Exception {
+
+        ReviewDomain reviewDomain = new ReviewDomain();
+        reviewDomain.setMovieId(movieId);
+        reviewDomain.setUserId(userId);
+        reviewDomain.setReviewTitle(reviewTitle);
+        reviewDomain.setReviewContent(reviewContent);
+        reviewDomain.setRating(rating);
+
+        reviewService.createReview(reviewDomain);
+        return "redirect:/review/board";
+    }
+
+    // 리뷰 수정 updateReview()
+
 
 
 
