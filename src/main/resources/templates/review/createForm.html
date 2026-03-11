@@ -10,45 +10,64 @@
 
 <!-- 헤더 연결 -->
 <div th:insert="layout/header :: header"></div>
-<p>리뷰 글쓰기</p>
 
-<!--<div class="sub-content-wrap">-->
-<!--  <section class="content-wrap">-->
-<!--    <div class="title">-->
-<!--      <h3>리뷰 글쓰기</h3>-->
-<!--    </div>-->
+<div class="sub-content-wrap">
+  <section class="content-wrap">
+    <div class="title">
+      <h3>리뷰 글쓰기</h3>
+    </div>
 
-<!--    <div class="board list">-->
-<!--      <div class="board-list-box">-->
-<!--        <ul>-->
-<!--          <div class="txt-box">-->
+    <div class="board list">
+      <div class="board-list-box">
 
-<!--            <div class="title-box">-->
-<!--&lt;!&ndash;              <a th:href="@{/review/createReview}">&ndash;&gt;-->
-<!--                &lt;!&ndash;리뷰 제목&ndash;&gt;-->
-<!--                <input type="radio" value="1"><label>왕과 사는 남자</label>-->
-<!--                <input type="radio" value="2"><label>휴민트</label>-->
-<!--                <input type="radio" value="3"><label>호퍼스</label>-->
-<!--              </a>-->
-<!--            </div>-->
+          <!--회원가입 포스트 방식으로 하기-->
+          <!--required로 입력 안하면 막아놓기 꼭!-->
+          <form class="create-form" th:action="@{/review/createReview}" method="POST">
 
-<!--            <div class="content-box">-->
-<!--              <input type="radio" value="1"><label>1점</label>-->
-<!--              &lt;!&ndash;리뷰 내용&ndash;&gt;-->
+        <ul>
+          <div class="txt-box">
 
-<!--            </div>-->
+            <div class="title-box">
 
-<!--            <div class="btn-group">-->
-<!--              <a th:href="@{/review/board}" class="btn">목록</a>-->
-<!--            </div>-->
+                <input type="hidden" name="userId" th:value="${session.member?.userId}">
 
-<!--          </div> &lt;!&ndash;txt-box&ndash;&gt;-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--      </div> &lt;!&ndash;board-list-box&ndash;&gt;-->
-<!--    </div> &lt;!&ndash;board list&ndash;&gt;-->
-<!--  </section>-->
-<!--</div>-->
+                <!--리뷰 제목-->
+                <label>영화 선택</label><br>
+                <input type="radio" name="movieId" value="1"><label>왕과 사는 남자</label>
+                <input type="radio" name="movieId" value="2"><label>휴민트</label>
+                <input type="radio" name="movieId" value="3"><label>호퍼스</label>
+              </a>
+            </div>
+
+              <!--리뷰 내용-->
+              <br>
+            <div class="content-box">
+                <label>평점 선택</label><br>
+              <input type="radio" name="rating" value="1"><label>1점</label>
+              <input type="radio" name="rating" value="2"><label>2점</label>
+              <input type="radio" name="rating" value="3"><label>3점</label>
+              <input type="radio" name="rating" value="4"><label>4점</label>
+              <input type="radio" name="rating" value="5"><label>5점</label>
+
+            </div>
+
+              <textarea name="reviewTitle" placeholder="제목"></textarea>
+              <textarea type="text" name="reviewContent" placeholder="내용"></textarea>
+
+              <br>
+            <div class="btn-group">
+                <button type="submit">등록</button>
+                <a th:href="@{/review/board}" class="btn">목록</a>
+            </div>
+
+
+          </div> <!--txt-box-->
+        </ul>
+      </div> <!--board-list-box-->
+    </div> <!--board list-->
+  </section>
+</div>
+
 
 
 

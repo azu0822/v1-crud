@@ -13,22 +13,26 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     ReviewMapper reviewMapper;
 
+    // 리뷰게시판 목록 불러오기
     @Override
     public List<ReviewDomain> listReviews() throws Exception {
         return reviewMapper.listReviews();
     }
+    // 리뷰게시판 글 보기
     @Override
     public ReviewDomain view(int reviewId) throws Exception {
         return reviewMapper.view(reviewId);
     }
+    // 리뷰 글 삭제
     @Override
     public void deleteReview(int reviewId) throws Exception {
         reviewMapper.deleteReview(reviewId);
-        return;
     }
-//    @Override
-//    public ReviewDomain createReview(ReviewDomain reviewDomain) throws Exception {
-//        return null;
-//    }
+    // 리뷰 글쓰기 등록
+    @Override
+    public ReviewDomain createReview(ReviewDomain reviewDomain) throws Exception {
+        reviewMapper.createReview(reviewDomain);
+        return reviewDomain;
+    }
 
 }
