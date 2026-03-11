@@ -10,4 +10,5 @@ public interface ReviewMapper {
     public List<ReviewDomain> listReviews();
     public ReviewDomain view(int reviewId);
     public void deleteReview(int reviewId);
+//    public void createReview(ReviewDomain reviewDomain);
 }

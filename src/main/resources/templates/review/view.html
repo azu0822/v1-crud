@@ -25,7 +25,7 @@
                             <div class="title-box">
                                 <a th:href="@{/review/board/view(reviewId=${view.reviewId})}">
                                     <!--리뷰 제목-->
-                                    <p th:text="${view.reviewTitle}"></p>
+                                    <p th:text="${view.reviewTitle}"></p></a>
                             </div>
 
                             <!--원본의 기존 <li> 대신 가로로 나열하는건 span으로 처리-->
@@ -45,7 +45,7 @@
                                 <a th:href="@{/review/board}" class="btn">목록</a>
 
                                 <a th:if="${session.member?.memberId != null}"
-                                   th:href="@{/review/board}" class="btn">글쓰기</a>
+                                   th:href="@{/review/createForm}" class="btn">글쓰기</a>
 
                                 <a th:if="${session.member?.memberId == view.memberId}"
                                    th:href="@{/review/board}" class="btn">수정하기</a>

@@ -1,13 +1,12 @@
 package com.cinehome.review.controller;
 
-import com.cinehome.member.service.MemberService;
 import com.cinehome.review.domain.ReviewDomain;
 import com.cinehome.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -42,35 +41,40 @@ public class ReviewController {
     }
 
     // 리뷰 삭제 	deleteReview()
-    @GetMapping("board/deleteReview")
+    @GetMapping("/board/deleteReview")
     public String deleteReview(@RequestParam("reviewId") int reviewId,
                                Model model) throws Exception {
 
         reviewService.deleteReview(reviewId);
         return "redirect:/review/board";
     }
-    // 리뷰 등록 createReview()
-    @GetMapping("board/createReview")
-    public String createReview(@RequestParam("movieId") int movieId,
-                               @RequestParam("userId") int userId,
-                               @RequestParam("reviewTitle") String reviewTitle,
-                               @RequestParam("reviewContent") String reviewContent,
-                               @RequestParam("rating") int rating,
-                               Model model) throws Exception {
-
-        ReviewDomain reviewDomain = new ReviewDomain();
-        reviewDomain.setMovieId(movieId);
-        reviewDomain.setUserId(userId);
-        reviewDomain.setReviewTitle(reviewTitle);
-        reviewDomain.setReviewContent(reviewContent);
-        reviewDomain.setRating(rating);
-
-        reviewService.createReview(reviewDomain);
-        return "redirect:/review/board";
+    // 리뷰 글쓰기 페이지로 이동
+    @GetMapping("/createForm")
+    public String createForm() throws Exception {
+        return "review/createForm";
     }
 
-    // 리뷰 수정 updateReview()
+    // 리뷰 등록 createReview()
+//    @PostMapping("board/createReview")
+//    public String createReview(@RequestParam("movieId") int movieId,
+//                               @RequestParam("userId") int userId,
+//                               @RequestParam("reviewTitle") String reviewTitle,
+//                               @RequestParam("reviewContent") String reviewContent,
+//                               @RequestParam("rating") int rating,
+//                               Model model) throws Exception {
+//
+//        ReviewDomain reviewDomain = new ReviewDomain();
+//        reviewDomain.setMovieId(movieId);
+//        reviewDomain.setUserId(userId);
+//        reviewDomain.setReviewTitle(reviewTitle);
+//        reviewDomain.setReviewContent(reviewContent);
+//        reviewDomain.setRating(rating);
+//
+//        reviewService.createReview(reviewDomain);
+//        return "redirect:/review/board";
+//    }
 
+    // 리뷰 수정 updateReview()
 
 
 

@@ -25,4 +25,6 @@ public class ReviewDomain {
 
     private String memberId;      // 작성자 아이디
 
+    public void getu() {
+    }
 }

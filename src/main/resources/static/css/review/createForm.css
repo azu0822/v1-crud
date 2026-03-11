@@ -1,0 +1,46 @@
+@media screen and (max-width: 1024.98px) {
+}
+
+body {
+    background: #fff;
+}
+/*우선순위 밑줄삭제*/
+a {
+    text-decoration: none
+}
+
+/* 컨테이너 */
+.content-wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.title h3 {
+    font-size: 1.5rem;
+    border-bottom: 2px solid #222;
+    padding-bottom: 15px;
+    margin: 0;
+}
+
+/* 리스트 스타일 초기화 */
+.board-list-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 각 게시글 간격 */
+.board-list-box ul li {
+    border-bottom: 1px solid #eee;
+    padding: 25px 10px;
+    transition: background-color 0.2s;
+}
+
+/* 리뷰 제목 */
+.title-box p {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #222;
+    margin: 5px 0 5px 0;
+}
