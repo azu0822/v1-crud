@@ -27,10 +27,18 @@ public class ReviewController {
         List<ReviewDomain> listReviews = reviewService.listReviews();
         model.addAttribute("listReviews", listReviews);
 
-
         return "review/board";
     }
-    // 리뷰게시판 클릭시 리뷰 글만 보이기 boardView()
+    // 리뷰게시판 글 보기 boardView()
+    @GetMapping("/board/view")
+    public String view(@RequestParam("reviewId") int reviewId,
+                            Model model) throws Exception {
+
+        ReviewDomain view = reviewService.view(reviewId);
+        model.addAttribute("view", view);
+
+        return "review/view";
+    }
 
     // 리뷰 등록 createReview()
 

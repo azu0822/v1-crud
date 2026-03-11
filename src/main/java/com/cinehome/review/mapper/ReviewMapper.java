@@ -8,4 +8,5 @@ import java.util.List;
 @Mapper
 public interface ReviewMapper {
     List<ReviewDomain> listReviews();
+    ReviewDomain view(int review);
 }

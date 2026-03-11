@@ -16,4 +16,7 @@ public class ReviewServiceImpl implements ReviewService {
     public List<ReviewDomain> listReviews() throws Exception {
         return reviewMapper.listReviews();
     }
+    public ReviewDomain view(int reviewId) throws Exception {
+        return reviewMapper.view(reviewId);
+    }
 }

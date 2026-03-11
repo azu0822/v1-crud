@@ -4,6 +4,10 @@
 body {
     background: #fff;
 }
+/*우선순위 밑줄삭제*/
+a {
+    text-decoration: none
+}
 
 /* 컨테이너 */
 .content-wrap {
@@ -48,10 +52,10 @@ body {
     line-height: 1.5;
     margin: 0 0 15px 0;
 
-    display: -webkit-box;           /*줄수 계산하는 박스로 만듬*/
-    -webkit-line-clamp: 3;          /*리뷰 내용 줄임 3줄까지만 보이게*/
-    -webkit-box-orient: vertical;   /*보이는 컨텐츠 영역에서 세로 방향부터 체크*/
-    overflow: hidden;               /*오버플로우된 글자 숨김*/
+    /*display: -webkit-box;           !*줄수 계산하는 박스로 만듬*!*/
+    /*-webkit-line-clamp: 3;          !*리뷰 내용 줄임 3줄까지만 보이게*!*/
+    /*-webkit-box-orient: vertical;   !*보이는 컨텐츠 영역에서 세로 방향부터 체크*!*/
+    /*overflow: hidden;               !*오버플로우된 글자 숨김*!*/
 }
 
 /* 작성자, 날짜, 조회수 가로 정렬 */

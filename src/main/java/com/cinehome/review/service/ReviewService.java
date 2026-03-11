@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ReviewService {
     List<ReviewDomain> listReviews() throws Exception;
+    ReviewDomain view(int reviewId) throws Exception;
 }

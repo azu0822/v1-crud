@@ -4,6 +4,10 @@
 body {
     background: #fff;
 }
+/*우선순위 밑줄삭제*/
+a {
+    text-decoration: none
+}
 
 /* 컨테이너 */
 .content-wrap {
@@ -28,6 +32,7 @@ body {
 
 /* 각 게시글 간격 */
 .board-list-box ul li {
+    text-decoration: none;
     border-bottom: 1px solid #eee;
     padding: 25px 10px;
     transition: background-color 0.2s;

@@ -26,6 +26,7 @@
                         <div class="txt-box">
 
                             <div class="title-box">
+                                <a th:href="@{/review/board/view(reviewId=${listReview.reviewId})}">
                                 <!--리뷰 제목-->
                                 <p th:text="${listReview.reviewTitle}"></p>
                             </div>
@@ -37,17 +38,11 @@
 
                             <!--원본의 기존 <li> 대신 가로로 나열하는건 span으로 처리-->
                             <div class="info-box">
-                                <span th:text="${listReview.memberId}">작성자:조수아 홍보기자</span>
-                                <span th:text="${listReview.getCreDt()}">날짜</span>
-                                <span th:text="${listReview.getUpdateDt()}">수정:날짜</span>
-                                <span th:text="${listReview.getViewCount()}">조회수</span>
+                                <span th:text="'작성자 '+${listReview.memberId}"></span>
+                                <span th:text="'등록일 '+${listReview.getCreDt()}"></span>
+                                <span th:text="'수정일 '+${listReview.getUpdateDt()}"></span>
+                                <span th:text="'조회수 '+${listReview.getViewCount()}"></span>
                             </div>
-<!--                            <div class="info-box">-->
-<!--                                <span class="member-id">작성자:조수아 홍보기자</span>-->
-<!--                                <span class="cre-date">날짜</span>-->
-<!--                                <span class="update-date">수정:날짜</span>-->
-<!--                                <span class="view-count">조회수</span>-->
-<!--                            </div>-->
 
                         </div> <!--txt-box-->
                     </li>
