@@ -10,6 +10,13 @@
     }
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
 /* 헤더 스타일 */
 .monaka-header{
     width: 100%;

@@ -15,7 +15,18 @@
         <result property="updateDt" column="update_dt"/>
         <result property="rating" column="rating"/>
         <result property="viewCount" column="view_count"/>
+
+        <result property="memberId" column="member_id"/>
     </resultMap>
 
+    <select id="listReviews" resultType="ReviewDomain">
+        select r.review_id, r.movie_id, r.review_title, r.review_content,
+               r.cre_dt, r.update_dt, r.rating, r.view_count,
+               m.member_id
+        from review r
+                 JOIN member m ON r.user_id = m.user_id
+        ORDER BY r.review_id DESC;
+
+    </select>
 
 </mapper>

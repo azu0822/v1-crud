@@ -1,16 +1,41 @@
 package com.cinehome.review.controller;
 
+import com.cinehome.member.service.MemberService;
+import com.cinehome.review.domain.ReviewDomain;
+import com.cinehome.review.service.ReviewService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/review")
 public class ReviewController {
 
+    @Autowired
+    ReviewService reviewService;
+
     // 리뷰게시판 페이지로 이동
     @GetMapping("/board")
-    public String board() {
+    public String board(Model model) throws Exception {
+
+        // 리뷰 목록 조회 listReviews()
+        List<ReviewDomain> listReviews = reviewService.listReviews();
+        model.addAttribute("listReviews", listReviews);
+
+
         return "review/board";
     }
+    // 리뷰게시판 클릭시 리뷰 글만 보이기 boardView()
+
+    // 리뷰 등록 createReview()
+
+    // 리뷰 수정 updateReview()
+
+    // 리뷰 삭제 	deleteReview()
+
 }
