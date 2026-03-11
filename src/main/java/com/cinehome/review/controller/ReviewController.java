@@ -43,16 +43,12 @@ public class ReviewController {
 
     // 리뷰 삭제 	deleteReview()
     @GetMapping("board/deleteReview")
-    public String deleteReview(@RequestParam("reveiwId") int reviewId,
+    public String deleteReview(@RequestParam("reviewId") int reviewId,
                                Model model) throws Exception {
 
         reviewService.deleteReview(reviewId);
         return "redirect:/review/board";
     }
-
-    // 리뷰 등록 createReview()
-
-    // 리뷰 수정 updateReview()
 
 
 
