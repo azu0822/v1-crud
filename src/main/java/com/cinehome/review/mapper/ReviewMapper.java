@@ -7,6 +7,7 @@ import java.util.List;
 
 @Mapper
 public interface ReviewMapper {
-    List<ReviewDomain> listReviews();
-    ReviewDomain view(int review);
+    public List<ReviewDomain> listReviews();
+    public ReviewDomain view(int reviewId);
+    public void deleteReview(int reviewId);
 }

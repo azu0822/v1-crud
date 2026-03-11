@@ -4,6 +4,7 @@ import com.cinehome.member.service.MemberService;
 import com.cinehome.review.domain.ReviewDomain;
 import com.cinehome.review.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,10 +41,20 @@ public class ReviewController {
         return "review/view";
     }
 
+    // 리뷰 삭제 	deleteReview()
+    @GetMapping("board/deleteReview")
+    public String deleteReview(@RequestParam("reveiwId") int reviewId,
+                               Model model) throws Exception {
+
+        reviewService.deleteReview(reviewId);
+        return "redirect:/review/board";
+    }
+
     // 리뷰 등록 createReview()
 
     // 리뷰 수정 updateReview()
 
-    // 리뷰 삭제 	deleteReview()
+
+
 
 }
