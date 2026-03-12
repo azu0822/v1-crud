@@ -34,5 +34,11 @@ public class ReviewServiceImpl implements ReviewService {
         reviewMapper.createReview(reviewDomain);
         return reviewDomain;
     }
+    // 리뷰 글쓰기 수정
+
+    @Override
+    public void updateReview(ReviewDomain reviewDomain) throws Exception {
+        reviewMapper.updateReview(reviewDomain);
+    }
 
 }

@@ -22,41 +22,61 @@
 
           <!--회원가입 포스트 방식으로 하기-->
           <!--required로 입력 안하면 막아놓기 꼭!-->
-          <form class="create-form" th:action="@{/review/createReview}" method="POST">
+
+          <!-- th:action로 전송할 때 삼항 연산자로 if 사용 -->
+          <form class="create-form" th:action="${view == null ? '/review/createReview' : '/review/updateReview'}" method="POST">
+<!--          <form class="create-form" th:action="@{/review/createReview}" method="POST">-->
 
         <ul>
           <div class="txt-box">
 
             <div class="title-box">
 
-                <input type="hidden" name="userId" th:value="${session.member?.userId}">
+                <input type="hidden" name="userId" th:value="${view?.userId ?: session.member.userId}">
+
+
+                <!-- [null-safe 연산자인 ?.]  view?. 를 쓰면 null일때 에러 발생시키지 않음-->
+
+                <!-- 글쓰기 null-->
+                <!--view가 null이면 글쓰기 view에 데이터가 있으면 수정-->
 
                 <!--리뷰 제목-->
                 <label>영화 선택</label><br>
-                <input type="radio" name="movieId" value="1"><label>왕과 사는 남자</label>
-                <input type="radio" name="movieId" value="2"><label>휴민트</label>
-                <input type="radio" name="movieId" value="3"><label>호퍼스</label>
-              </a>
-            </div>
+                <input type="radio" name="movieId" value="1" th:checked="${view?.movieId == 1}" required><label>왕과 사는 남자</label>
+                <input type="radio" name="movieId" value="2" th:checked="${view?.movieId == 2}" required><label>휴민트</label>
+                <input type="radio" name="movieId" value="3" th:checked="${view?.movieId == 3}" required><label>호퍼스</label>
+            </div> <!--title-box-->
 
               <!--리뷰 내용-->
               <br>
             <div class="content-box">
                 <label>평점 선택</label><br>
-              <input type="radio" name="rating" value="1"><label>1점</label>
-              <input type="radio" name="rating" value="2"><label>2점</label>
-              <input type="radio" name="rating" value="3"><label>3점</label>
-              <input type="radio" name="rating" value="4"><label>4점</label>
-              <input type="radio" name="rating" value="5"><label>5점</label>
+              <input type="radio" name="rating" value="1" th:checked="${view?.rating == 1}" required><label>1점</label>
+              <input type="radio" name="rating" value="2" th:checked="${view?.rating == 2}" required><label>2점</label>
+              <input type="radio" name="rating" value="3" th:checked="${view?.rating == 3}" required><label>3점</label>
+              <input type="radio" name="rating" value="4" th:checked="${view?.rating == 4}" required><label>4점</label>
+              <input type="radio" name="rating" value="5"th:checked="${view?.rating == 5}" required><label>5점</label>
 
-            </div>
+            </div> <!--content-box-->
 
-              <textarea name="reviewTitle" placeholder="제목"></textarea>
-              <textarea type="text" name="reviewContent" placeholder="내용"></textarea>
+
+              <div><!--제목에 input 쓰고 th:value-->
+                  <input name="reviewTitle" placeholder="제목" th:value="${view?.reviewTitle}" required>
+              </div>
+              <div><!--내용은 textarea와 th:text 사용-->
+                  <textarea  name="reviewContent" placeholder="내용" th:text="${view?.reviewContent}" required></textarea>
+              </div>
+<!--              <textarea name="reviewTitle" placeholder="제목"></textarea>-->
+<!--              <textarea type="text" name="reviewContent" placeholder="내용"></textarea>-->
 
               <br>
-            <div class="btn-group">
-                <button type="submit">등록</button>
+              <!--게시글 수정 시 hidden으로 게시글넘버 보내기-->
+              <input type="hidden" name="reviewId" th:value="${view?.reviewId}">
+
+              <div class="btn-group">
+                  <!--th타임리프로 받은 내용이 없으면 등록, 있으면 수정-->
+                <button type="submit" th:if="${view == null}">등록</button>
+                <button type="submit" th:if="${view != null}">수정</button>
                 <a th:href="@{/review/board}" class="btn">목록</a>
             </div>
 
@@ -64,6 +84,7 @@
           </div> <!--txt-box-->
         </ul>
       </div> <!--board-list-box-->
+
     </div> <!--board list-->
   </section>
 </div>

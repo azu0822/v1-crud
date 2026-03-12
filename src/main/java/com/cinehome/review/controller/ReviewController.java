@@ -71,8 +71,35 @@ public class ReviewController {
 
         return "redirect:/review/board";
     }
+    // 리뷰 수정 클릭 시 글쓰기 폼으로
+    @GetMapping("/updateForm")
+    public String updateForm(@RequestParam("reviewId") int reviewId,
+                             Model model) throws Exception {
+        ReviewDomain view = reviewService.view(reviewId);
+        model.addAttribute("view", view);
+        return "review/createForm";
+    }
     // 리뷰 글쓰기 수정 updateReview()
+    @PostMapping("/updateReview")
+    public String updateReview(@RequestParam("reviewId") int reviewId,
+                               @RequestParam("movieId") int movieId,
+                               @RequestParam("userId") int userId,
+                               @RequestParam("reviewTitle") String reviewTitle,
+                               @RequestParam("reviewContent") String reviewContent,
+                               @RequestParam("rating") int rating,
+                               Model model) throws Exception {
 
+        ReviewDomain reviewDomain = new ReviewDomain();
+        reviewDomain.setReviewId(reviewId);
+        reviewDomain.setMovieId(movieId);
+        reviewDomain.setUserId(userId);
+        reviewDomain.setReviewTitle(reviewTitle);
+        reviewDomain.setReviewContent(reviewContent);
+        reviewDomain.setRating(rating);
+        reviewService.updateReview(reviewDomain);
+
+        return "redirect:/review/board";
+    }
 
 
 

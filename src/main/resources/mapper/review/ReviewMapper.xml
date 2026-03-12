@@ -47,7 +47,7 @@
 
     <update id="updateReview" parameterType="ReviewDomain">
         update review
-        set movie_id=#{movieId}, user_id=#{userId}, review_title=#{reviewTitle},
+        set movie_id=#{movieId}, review_title=#{reviewTitle},
                           review_content=#{reviewContent}, rating=#{rating}
         where review_id = #{reviewId}
     </update>

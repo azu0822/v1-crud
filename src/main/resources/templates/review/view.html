@@ -23,7 +23,7 @@
                         <div class="txt-box">
 
                             <div class="title-box">
-                                <a th:href="@{/review/board/view(reviewId=${view.reviewId})}">
+<!--                                <a th:href="@{/review/board/view(reviewId=${view.reviewId})}">-->
                                     <!--리뷰 제목-->
                                     <p th:text="${view.reviewTitle}"></p></a>
                             </div>
@@ -36,21 +36,36 @@
                                 <span th:text="'조회수 '+${view.getViewCount()}"></span>
                             </div>
 
+                            <div class="info-box">
+                                <label>영화 제목: </label>
+                                <span th:if="${view.movieId == 1}">왕과 사는 남자</span>
+                                <span th:if="${view.movieId == 2}">휴민트</span>
+                                <span th:if="${view.movieId == 3}">휴민트</span>
+
+                            <div class="content-box">
+                                <label>평점: </label>
+                                <span th:text="${view.movieId} + '점'"></span>
+                            </div>
+                        </div>
+
+                            <br>
+
                             <div class="content-box">
                                 <!--리뷰 내용-->
                                 <p th:text="${view.reviewContent}"></p>
                             </div>
 
+
                             <div class="btn-group">
                                 <a th:href="@{/review/board}" class="btn">목록</a>
 
-                                <a th:if="${session.member?.memberId != null}"
+                                <a th:if="${session.member?.userId != null}"
                                    th:href="@{/review/createForm}" class="btn">글쓰기</a>
 
-                                <a th:if="${session.member?.memberId == view.memberId}"
-                                   th:href="@{/review/board}" class="btn">수정하기</a>
+                                <a th:if="${session.member?.userId == view.userId}"
+                                   th:href="@{/review/updateForm(reviewId=${view.getReviewId()})}" class="btn">수정하기</a>
 
-                                <a th:if="${session.member?.memberId == view.memberId}"
+                                <a th:if="${session.member?.userId == view.userId}"
                                    th:href="@{/review/board/deleteReview(reviewId=${view.reviewId})}">삭제</a>
                             </div>
 
