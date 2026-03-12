@@ -15,4 +15,6 @@ public interface ReviewMapper {
     public void deleteReview(int reviewId);
     // 리뷰 글쓰기 등록
     public void createReview(ReviewDomain reviewDomain);
+    // 글쓰기 수정
+    public void updateReview(ReviewDomain updateReview);
 }

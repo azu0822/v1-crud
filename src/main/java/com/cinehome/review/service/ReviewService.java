@@ -14,4 +14,7 @@ public interface ReviewService {
     public void deleteReview(int reviewId) throws Exception;
     // 리뷰 글쓰기 등록
     public ReviewDomain createReview(ReviewDomain reviewDomain) throws Exception;
+    // 리뷰 글쓰기 수정
+    public void updateReview(ReviewDomain reviewDomain) throws Exception;
+
 }

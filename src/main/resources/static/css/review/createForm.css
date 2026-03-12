@@ -44,3 +44,11 @@ a {
     color: #222;
     margin: 5px 0 5px 0;
 }
+.btn-group a{
+    margin-right: 15px;
+    color: #666666;
+}
+.btn-group button{
+    margin-right: 15px;
+    color: #666666;
+}
