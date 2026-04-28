@@ -27,7 +27,6 @@
           <form class="create-form" th:action="${view == null ? '/review/createReview' : '/review/updateReview'}" method="POST">
 <!--          <form class="create-form" th:action="@{/review/createReview}" method="POST">-->
 
-        <ul>
           <div class="txt-box">
 
             <div class="title-box">
@@ -60,10 +59,14 @@
             </div> <!--content-box-->
 
 
-              <div><!--제목에 input 쓰고 th:value-->
+              <!-- <div class="input-container"> -->
+              <!-- 제목과 내용 입력창 div에 class="클래스명"을 써주면 다른 div input과 혼동되지 않음 -->
+              <div class="input-container">
+                  <!--제목에 input 쓰고 th:value-->
                   <input name="reviewTitle" placeholder="제목" th:value="${view?.reviewTitle}" required>
               </div>
-              <div><!--내용은 textarea와 th:text 사용-->
+              <div class="input-container">
+              <!--내용은 textarea와 th:text 사용-->
                   <textarea  name="reviewContent" placeholder="내용" th:text="${view?.reviewContent}" required></textarea>
               </div>
 <!--              <textarea name="reviewTitle" placeholder="제목"></textarea>-->
@@ -82,7 +85,6 @@
 
 
           </div> <!--txt-box-->
-        </ul>
       </div> <!--board-list-box-->
 
     </div> <!--board list-->
